@@ -1,0 +1,70 @@
+Human immune-deficiency virus, HIV, is a virus that infects human cells. When HIV infects a cell, the cell synthesizes a
+viral protein called HIV protease. The function of HIV protease is to bind and cut another viral protein called Gag-Pol to
+create two separate proteins, Gag and Pol. A newly discovered strain of HIV makes an altered form of the HIV protease
+that differs by a single amino acid substitution from the normal protease.
+Based on this information and your knowledge about biology, select true or false for each of the following
+statements.
+a) T/F This altered protease is the result of a mutation within the viral genome.
+b) T/F This altered protease could be more efficient at cutting Gag-Pol than the normal protease.
+c) T/F This altered protease could bind less tightly to the Gag-pol protein.
+d) T/F The HIV strain that makes this altered protease could be resistant to drugs designed to block the function of the
+normal protease.
+e) T/F This altered protease will likely be shorter than the normal protease.
+Knowledge statements:
+a) Viruses carry their own genomes that become expressed within cellular hosts. A mutation within the viral genome can
+lead to changes in the products expressed from the viral genome.
+b) A single amino acid change in a protein can change the structure of a protein causing that protein to function more
+efficiently.
+c) A single amino acid change in a protein can change the structure of a protein causing that protein to function less
+efficiently.
+d) Mutations can confer viral drug resistance by changing the ability of a drug to bind its viral target.
+e) A mutation that causes a single amino acid substitution in a protein will not likely change the overall length of the
+polypeptide.
+
+A single species of bacteria only spreads by physical contact between living birds of the same species. The bacteria infect
+the birds’ eyes and can cause inflammation leading to blindness and death.
+Over the past 15 years, the way this bacterial species infects and kills birds has shifted: an Eastern Canadian strain now
+causes severe infection and rapid death, while strains of the same species of bacteria that spread to Western Canada do not
+cause severe infection or death. Although birds in Western Canada do not experience severe infection and do not die, the
+Western bacterial strain still lives in these birds. Both strains of bacteria divide every 20 minutes, while birds take
+approximately 3 years to reach reproductive age.
+Based on this information and your knowledge about biology, select true or false for each of the following
+statements.
+a) T/F During this 15 year period, both bacterial strains have the capacity to accumulate genetic changes more rapidly
+than birds.
+b) T/F The Eastern Canadian bacterial strain is still evolving, but Eastern Canadian birds are no longer evolving.
+c) T/F In Western Canada, a bird that survives bacterial infection due to the bird’s specific genetic makeup is likely to
+have offspring who survive infection by the same strain of bacteria.
+d) T/F The difference in the severity of infection in Eastern and Western Canada could be due to genetic differences in
+Eastern and Western bird hosts.
+Knowledge Statements
+a) Species that reproduce more rapidly or have higher mutation rates have the capacity to accumulate genetic changes
+more rapidly than those with slower reproduction rates.
+b) All species continue to evolve.
+c) If an organism has a genetically based fitness advantage, then this organism’s offspring are also likely to have this
+fitness advantage.
+d) A pathogen can have different effects in different subgroups of a species due to underlying genetic differences between
+the subgroups. Genetic differences in subgroups can also drive the divergent evolution of a pathogen.
+
+
+During the course of normal human development, the muscle myosin protein becomes expressed in muscle cells but not in
+non-muscle cells, such as liver cells.
+Based on this information and your knowledge about biology, select true or false for each of the following
+statements.
+a) T/F This expression pattern could result from the muscle myosin gene being present in muscle cells but not in liver
+cells.
+b) T/F This expression pattern could result from the regulatory sequence of the muscle myosin gene being different in
+muscle cells compared to liver cells.
+c) T/F This expression pattern could result from epigenetic modifications, such as DNA methylation, being present on
+the myosin gene in liver cells but not in muscle cells.
+d) T/F This expression pattern could result from a transcription factor that activates expression of the muscle myosin
+gene being present in muscle cells but not in liver cells.
+Knowledge statements:
+a) Different cell types have the same genetic composition. With some exceptions, cell-type specific gene expression
+patterns are not caused by the programmed loss of genes during development.
+b) Different cell types have the same genetic composition. While single cells may develop mutations, cell-type specific
+gene expression patterns are not the result of programmed mutations during development.
+c) Different chemical modifications to DNA and associated histone proteins can occur in different cell types, leading to
+changes in gene expression.
+d) Different transcription factor proteins are selectively expressed in different cell types, contributing to differences in
+gene expression between these cell types.
