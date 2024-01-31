@@ -203,3 +203,68 @@ if prompt := st.chat_input("Type your message here..."):
                 message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
     st.session_state.display_messages.append({"role": "assistant", "content": full_response})
+
+# Line Break
+st.markdown('<br>', unsafe_allow_html=True)
+
+# Display the messages
+st.markdown('<div class="markdown-font-large"><em>ChatGPT can make errors and does not replace verified and reputable online and classroom resources.</em></div>', unsafe_allow_html=True)
+
+
+# Links and descriptions
+resources = [
+    {
+        "title": "Evolution 101 - UC Berkeley",
+        "url": "https://evolution.berkeley.edu/evolution-101/",
+        "description": "A comprehensive guide to the basics of evolution, covering key concepts, history of life, and evolutionary mechanisms."
+    },
+    {
+        "title": "Understanding Evolution - UC Berkeley",
+        "url": "https://evolution.berkeley.edu/",
+        "description": "A one-stop resource for in-depth information on evolution, designed to enhance understanding of what evolution is and how it works."
+    },
+    {
+        "title": "Khan Academy - Biology",
+        "url": "https://www.khanacademy.org/science/biology",
+        "description": "Offers a wide range of biology topics with easy-to-understand video tutorials and practice exercises for undergraduate students."
+    },
+    {
+        "title": "NCBI Bookshelf - Biology",
+        "url": "https://www.ncbi.nlm.nih.gov/books/",
+        "description": "A collection of biology books and literature available online for free, suitable for in-depth study in various biology areas."
+    },
+    {
+        "title": "OpenStax - Biology",
+        "url": "https://openstax.org/details/books/biology",
+        "description": "Provides free, peer-reviewed, openly licensed textbooks for introductory college and AP-level biology courses."
+    },
+    {
+        "title": "Learn Genetics - Utah",
+        "url": "https://learn.genetics.utah.edu/",
+        "description": "An interactive resource offering educational materials on genetics, bioscience, and health topics. Perfect for students and educators looking for comprehensive genetics and bioscience information."
+    },
+    {
+        "title": "Scitable by Nature Education",
+        "url": "https://www.nature.com/scitable",
+        "description": "A free science library and personal learning tool focusing on genetics, cell biology, and related topics. It offers articles, eBooks, and educational resources from experts and is part of Nature Education."
+    }
+]
+
+st.sidebar.markdown("Online Resources")
+for resource in resources:
+    with st.sidebar:
+        st.markdown(f"### [{resource['title']}]({resource['url']})")
+        st.write(resource['description'])
+
+# Footer
+with st.sidebar:
+    st.markdown("---")
+
+    st.markdown("""
+        This app is managed by Keefe Reuther - [https://reutherlab.biosci.ucsd.edu/](https://reutherlab.biosci.ucsd.edu/)
+    """)
+    st.markdown("""
+        It can be found at [https://github.com/keefereuther/bioapp_streamlit](https://github.com/keefereuther/bioapp_streamlit) 
+        and is distributed under the GNU GPL-3 License.
+    """)
+
