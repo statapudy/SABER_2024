@@ -6,6 +6,7 @@ import time
 import base64
 import logging
 import io
+import config
 from openai import OpenAI
 
 # Set up logging
@@ -52,7 +53,7 @@ def set_custom_styles():
     <style>
     /* Custom font size for specific markdown lines */
     .markdown-font-large {
-        font-size: 14pt;  /* Adjust the size as needed */
+        font-size: 18pt;  /* Adjust the size as needed */
     }
 
     /* [Other styles] */
@@ -62,13 +63,12 @@ def set_custom_styles():
 set_custom_styles()
 
 # Streamlit app layout
-col1, col2 = st.columns([1,5])
-col2.title('Schema Study: An AI-enhanced study app')
-col1.image("static/logolight.png", width=80)
-st.write("Created by Keefe Reuther")
-st.markdown('<div class="markdown-font-large">This is a good place to start if you are just beginning to study for an exam or if you are trying to get a better grasp of the course material. You will be asked to define key terms and concepts from the course. You will receive immediate feedback on your responses.</div>', unsafe_allow_html=True)
+# col1, col2 = st.columns([1,5])
+st.title(config.app_title)
+st.write(config.app_author)
+st.markdown(config.intro_para)
 st.markdown('<br>', unsafe_allow_html=True)
-st.sidebar.title('Chat about important course terms and concepts')
+st.sidebar.title(config.sidebar_title)
 
 # Set a seed for random number generation
 random_seed = 25
@@ -112,7 +112,7 @@ st.markdown('<br>', unsafe_allow_html=True)
 # Define a basic initial context at the beginning of your script
 initial_context = {
     "role": "system",
-    "content": "You are an assistant knowledgeable in university-level biology helping a student in a lower division college course. Provide concise and accurate responses to questions or definitions related to biology questions the user asks. The user will be responding to the following prompt: 'Instructions: First, write a simple definition of some biology term. Include a real-world example and any other related concepts you might need to know for an exam.' Provide formative feedback in a clear, succinct way. Mention any factual errors in the response. Employ the Socratic method, giving the user hints and guiding questions with the goal of getting the user to provide information that was not in the initial user response. Do NOT use extraneous language, such as 'your answer lacks a detailed explanation'. Keep in mind that my response is limited to 500 characters, so there is no expectation that the correct answer is more than a short paragraph. Try and keep your response within 1000 characters. Make sure to always to provide feedback for each part of the users input. Do not provide advice, such as: 'Remember, the more specific and detailed your response, the better your understanding of the concept will be.' Your secondary goal as the chat progresses is to help users explicitly think about their learning and study process as well as best practices in information and data literacy. If they write anything unrelated to topics possibly covered in an undergraduate biology course, please respond with: I appreciate your question, but if you would like to take a break from studying, might I suggest a tall glass of water and mindful relaxation."
+    "content": config.initial_prompt
 }
 
 # Initialize the session state variables for selected term, schema, and display messages
@@ -139,11 +139,11 @@ if st.button('Click to pick a term'):
     st.session_state.selected_schema = selected_schema
     st.session_state.display_term = True
 
-    # Update the initial context with the new selected term
+    # Update the initial context with dynamic content
+    updated_prompt = config.term_prompt(st.session_state.selected_term, st.session_state.selected_schema)
     initial_context = {
-        "role": "system",
-        "content": f"You are an assistant knowledgeable in university-level biology helping a student in a lower division college course. Provide concise and accurate responses to questions or definitions related to the term '{st.session_state.selected_term}'. The user will be responding to the following prompt: 'Instructions: First, write a simple definition of '{st.session_state.selected_term}'. Include a real-world example and any other related concepts you might need to know for an exam.' Provide formative feedback in a clear, succinct way. Base your response on the definitions provided: '{st.session_state.selected_schema}'. Mention any factual errors in the response. Employ the Socratic method, giving the user hints and guiding questions with the goal of getting the user to provide information that was not in the initial user response. Do NOT use extraneous language, such as 'your answer lacks a detailed explanation'. Keep in mind that my response is limited to 500 characters, so there is no expectation that the correct answer is more than a short paragraph. Try and keep your response within 1000 characters. Make sure to always to provide feedback for each part of the users input. Do not provide advice, such as: 'Remember, the more specific and detailed your response, the better your understanding of the concept will be.' Your secondary goal as the chat progresses is to help users explicitly think about their learning and study process as well as best practices in information and data literacy. If they write anything unrelated to topics possibly covered in an undergraduate biology course, please respond with: I appreciate your question, but if you would like to take a break from studying, might I suggest a tall glass of water and mindful relaxation."
-    }
+        "role": "system", 
+        "content": updated_prompt}
 
     # Reset the conversation with the new initial context
     st.session_state.display_messages = [initial_context]
@@ -168,13 +168,13 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Initialize the session state variables if they don't exist
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-4-1106-preview"
+    st.session_state["openai_model"] = config.ai_model
 
 if "display_messages" not in st.session_state:
     st.session_state.display_messages = [initial_context]
 
 # Display the messages
-st.markdown('<div class="markdown-font-large">Instructions: First, write a simple definition of the selected term. Include a real-world example and any other related concepts you might need to know for an exam. Please follow-up with questions. Have a conversation!</div>', unsafe_allow_html=True)
+st.markdown(config.instructions)
 
 # Input for new messages
 if prompt := st.chat_input("Type your message here..."):
@@ -196,8 +196,8 @@ if prompt := st.chat_input("Type your message here..."):
                     for m in st.session_state.display_messages
                 ],
                 stream=True,
-                temperature=0,
-                max_tokens=500
+                temperature=config.temperature,
+                max_tokens=config.max_tokens,
             ):
                 full_response += (response.choices[0].delta.content or "")
                 message_placeholder.markdown(full_response + "▌")
@@ -210,48 +210,8 @@ st.markdown('<br>', unsafe_allow_html=True)
 # Display the messages
 st.markdown('<div class="markdown-font-large"><em>ChatGPT can make errors and does not replace verified and reputable online and classroom resources.</em></div>', unsafe_allow_html=True)
 
-
-# Links and descriptions
-resources = [
-    {
-        "title": "Evolution 101 - UC Berkeley",
-        "url": "https://evolution.berkeley.edu/evolution-101/",
-        "description": "A comprehensive guide to the basics of evolution, covering key concepts, history of life, and evolutionary mechanisms."
-    },
-    {
-        "title": "Understanding Evolution - UC Berkeley",
-        "url": "https://evolution.berkeley.edu/",
-        "description": "A one-stop resource for in-depth information on evolution, designed to enhance understanding of what evolution is and how it works."
-    },
-    {
-        "title": "Khan Academy - Biology",
-        "url": "https://www.khanacademy.org/science/biology",
-        "description": "Offers a wide range of biology topics with easy-to-understand video tutorials and practice exercises for undergraduate students."
-    },
-    {
-        "title": "NCBI Bookshelf - Biology",
-        "url": "https://www.ncbi.nlm.nih.gov/books/",
-        "description": "A collection of biology books and literature available online for free, suitable for in-depth study in various biology areas."
-    },
-    {
-        "title": "OpenStax - Biology",
-        "url": "https://openstax.org/details/books/biology",
-        "description": "Provides free, peer-reviewed, openly licensed textbooks for introductory college and AP-level biology courses."
-    },
-    {
-        "title": "Learn Genetics - Utah",
-        "url": "https://learn.genetics.utah.edu/",
-        "description": "An interactive resource offering educational materials on genetics, bioscience, and health topics. Perfect for students and educators looking for comprehensive genetics and bioscience information."
-    },
-    {
-        "title": "Scitable by Nature Education",
-        "url": "https://www.nature.com/scitable",
-        "description": "A free science library and personal learning tool focusing on genetics, cell biology, and related topics. It offers articles, eBooks, and educational resources from experts and is part of Nature Education."
-    }
-]
-
 st.sidebar.markdown("Online Resources")
-for resource in resources:
+for resource in config.resources:
     with st.sidebar:
         st.markdown(f"### [{resource['title']}]({resource['url']})")
         st.write(resource['description'])
@@ -261,10 +221,10 @@ with st.sidebar:
     st.markdown("---")
 
     st.markdown("""
-        This app is managed by Keefe Reuther - [https://reutherlab.biosci.ucsd.edu/](https://reutherlab.biosci.ucsd.edu/)
+        The template for this app was created by Keefe Reuther and the members of the Reuther Lab - [https://reutherlab.biosci.ucsd.edu/](https://reutherlab.biosci.ucsd.edu/)
     """)
     st.markdown("""
-        It can be found at [https://github.com/keefereuther/bioapp_streamlit](https://github.com/keefereuther/bioapp_streamlit) 
+        It can be found at [https://github.com/The-Reuther-Lab/SABER_2024](https://github.com/The-Reuther-Lab/SABER_2024) 
         and is distributed under the GNU GPL-3 License.
     """)
 
