@@ -80,7 +80,7 @@ def set_custom_styles():
     <style>
     /* Custom font size for specific markdown lines */
     .markdown-font-large {
-        font-size: 18pt;  /* Adjust the size as needed */
+        font-size: 14pt;  /* Adjust the size as needed */
     }
 
     /* [Other styles] */
