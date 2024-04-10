@@ -62,6 +62,9 @@ st.caption(config.app_author)
 with st.expander("INSTRUCTIONS:"):
     st.markdown(config.instructions)
 st.sidebar.title(config.sidebar_title)
+with st.sidebar:
+        with st.expander("Click here for instructions."):
+            st.write(config.sidebar_instructions)
 
 ############################################################################################################
 # File Uploader in sidebar
@@ -97,10 +100,10 @@ def create_download_link(file_path, file_name):
         logging.exception(error_message)
 
 # Download link for the template file
-template_file_path = "terms_template.csv"
+template_file_path = config.default_terms_csv
 
 # File Uploader
-uploaded_file = st.sidebar.file_uploader("Upload a CSV file with terms", type=["csv"])
+uploaded_file = st.sidebar.file_uploader(" ", type=["csv"])
 if uploaded_file is not None:
     logging.info(f"File uploaded: {uploaded_file.name}")
     st.session_state.uploaded_file = uploaded_file
