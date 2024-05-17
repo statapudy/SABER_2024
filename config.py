@@ -7,7 +7,7 @@
 # Below is the configuration for the chatbot
 
 # The model_name refers to the name of the model you want to use. You can choose from the following models: 
-ai_model = "gpt-4-0125-preview"
+ai_model = "gpt-4o"
 
 # Temperature refers to the randomness/creativity of the responses. A higher temperature will result in more random/creative responses. It varies between 0 and 1.
 temperature = 0
