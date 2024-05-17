@@ -12,6 +12,8 @@ import base64
 import logging
 import io
 import config
+import sys
+import pkg_resources
 from openai import OpenAI
 
 ############################################################################################################
@@ -54,6 +56,17 @@ logging.basicConfig(level=logging.DEBUG, filename='app_log.log', filemode='w',
 
 # Set the page to wide or centered mode
 st.set_page_config(layout="centered")
+
+# Display Python version
+st.write(f"Python version: {sys.version}")
+
+# Display versions of all installed packages
+installed_packages = pkg_resources.working_set
+packages = sorted([(d.project_name, d.version) for d in installed_packages])
+
+st.write("Installed packages and versions:")
+for package_name, version in packages:
+    st.write(f"{package_name}: {version}")
 
 # Streamlit app layout
 st.title(config.app_title)
