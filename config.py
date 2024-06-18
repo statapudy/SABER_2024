@@ -26,7 +26,7 @@ default_terms_csv = "terms_template.csv"
 # Below is all the text you can customize for the app. Don't remove the quotations around the text. Don't change the variable names.
 
 # The title of the app
-app_title = "DIY AI-enhanced study app"
+app_title = "DIY AI-enhanced study app for biologists"
 
 # The subtitle of the app
 app_author = "courtesy of UCSD School of Biological Sciences"
