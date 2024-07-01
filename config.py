@@ -59,7 +59,7 @@ sidebar_title = "Have your own terms to study?"
 # The instructions for the template
 sidebar_instructions = "Do you have your own terms to study? If so, download the terms_template.csv file. You can delete everything below the first row and add in your own terms in the first column. You can open and edit it in Excel, Google Sheets, or any text editor. Make sure that you don't change the file extension from csv. Once done, upload it below. The app will use your terms for the study session."
 
-app_creation_message = "The template for this app was created by Keefe Reuther and the members of the Reuther Lab - [https://reutherlab.biosci.ucsd.edu/](https://reutherlab.biosci.ucsd.edu/)"
+app_creation_message = "The template for this app was created by Keefe Reuther and the members of the Reuther Lab - [https://reutherlab.biosci.ucsd.edu/](https://reutherlab.netlify.app/)"
 
 app_repo_license_message = "It can be found at [https://github.com/The-Reuther-Lab/SABER_2024](https://github.com/The-Reuther-Lab/SABER_2024) and is distributed under the GNU GPL-3 License."
 

@@ -48,8 +48,8 @@ if not check_password():
 ############################################################################################################
 # Logging
 
-logging.basicConfig(level=logging.DEBUG, filename='app_log.log', filemode='w',
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# logging.basicConfig(level=logging.DEBUG, filename='app_log.log', filemode='w',
+#                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 ############################################################################################################
 # Streamlit app layout
@@ -57,35 +57,35 @@ logging.basicConfig(level=logging.DEBUG, filename='app_log.log', filemode='w',
 # Set the page to wide or centered mode
 st.set_page_config(layout="centered")
 
-def get_installed_packages():
-    installed_packages = {pkg.key: pkg.version for pkg in pkg_resources.working_set}
-    return installed_packages
+# def get_installed_packages():
+#     installed_packages = {pkg.key: pkg.version for pkg in pkg_resources.working_set}
+#     return installed_packages
 
-def read_requirements(file_path):
-    with open(file_path, 'r') as file:
-        requirements = file.readlines()
-    # Strip out any version specifiers to get package names only
-    packages = [line.strip().split('==')[0] for line in requirements]
-    return packages
+# def read_requirements(file_path):
+#     with open(file_path, 'r') as file:
+#         requirements = file.readlines()
+#     # Strip out any version specifiers to get package names only
+#     packages = [line.strip().split('==')[0] for line in requirements]
+#     return packages
 
-# Display Python version
-st.write(f"Python version: {sys.version}")
+# # Display Python version
+# st.write(f"Python version: {sys.version}")
 
-# Get installed packages and their versions
-installed_packages = get_installed_packages()
+# # Get installed packages and their versions
+# installed_packages = get_installed_packages()
 
-# Read the requirements.txt file
-requirements_file = 'requirements.txt'
-required_packages = read_requirements(requirements_file)
+# # Read the requirements.txt file
+# requirements_file = 'requirements.txt'
+# required_packages = read_requirements(requirements_file)
 
-# Display versions of required packages
-st.write("Required packages and their versions:")
-for package in required_packages:
-    version = installed_packages.get(package.lower())
-    if version:
-        st.write(f"{package}: {version}")
-    else:
-        st.write(f"{package}: Not installed")
+# # Display versions of required packages
+# st.write("Required packages and their versions:")
+# for package in required_packages:
+#     version = installed_packages.get(package.lower())
+#     if version:
+#         st.write(f"{package}: {version}")
+#     else:
+#         st.write(f"{package}: Not installed")
 
 # Streamlit app layout
 st.title(config.app_title)
