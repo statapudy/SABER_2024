@@ -254,6 +254,8 @@ with st.container(height=300, border=True):
             stream=False,  # Disable streaming
             temperature=config.temperature,
             max_tokens=config.max_tokens,
+            frequency_penalty=config.frequency_penalty,
+            presence_penalty=config.presence_penalty,
         )
 
         # Correctly extract the full response from the API's return object.
