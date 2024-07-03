@@ -232,7 +232,7 @@ if prompt:
     st.session_state["display_messages"].append({"role": "user", "content": prompt})
 
 # Main chat container
-with st.container(height=300, border=True):
+with st.container(height=500, border=True):
     # Display chat history in reverse order including new messages
     for message in st.session_state["display_messages"][1:]:
         if message["role"] == "user":
