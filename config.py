@@ -13,7 +13,7 @@ ai_model = "gpt-4o"
 temperature = 0
 
 # Max_tokens refers to the maximum number of tokens (words) the AI can generate. The higher the number, the longer the response. It varies between 1 and 2048.
-max_tokens = 1000
+max_tokens = 500
 
 # Frequency penalty parameter for the response. Higher penalty will result in more diverse responses. It varies between 0 and 1.
 frequency_penalty = 0.5
